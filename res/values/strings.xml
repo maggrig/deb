@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Запись для игры &quot;Деберц&quot;</string>
+    <string name="menu_settings">Settings</string>
+    <string name="name2">2 Игрока</string>
+    <string name="name3">3 игрока</string>
+    <string name="name4">4 Игрока</string>
+
+</resources>

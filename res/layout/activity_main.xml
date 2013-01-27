@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+ xmlns:android="http://schemas.android.com/apk/res/android"
+ android:layout_width="fill_parent"
+ android:layout_height="fill_parent"
+ android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:text="Настройки" />
+
+<TabHost
+ android:id="@android:id/tabhost"
+ android:layout_width="match_parent"
+ android:layout_height="match_parent">
+<LinearLayout
+ android:layout_width="match_parent"
+ android:layout_height="match_parent"
+ android:orientation="vertical">
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="fill_parent"
+        android:layout_height="35dp"
+        android:text="Архив игр" />
+
+<TabWidget
+    android:id="@android:id/tabs"
+    android:layout_width="match_parent"
+    android:layout_height="42dp" >
+
+</TabWidget>
+
+<FrameLayout
+    android:id="@android:id/tabcontent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:persistentDrawingCache="animation" >
+
+<TextView
+    android:id="@+id/tvTab1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center|top|fill" >
+
+</TextView>
+
+<TextView
+    android:id="@+id/tvTab2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center" >
+
+</TextView>
+
+<TextView
+    android:id="@+id/tvTab3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+</TextView>
+
+<WebView
+    android:id="@+id/webView1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" />
+
+</FrameLayout>
+</LinearLayout>
+</TabHost>
+</LinearLayout>
