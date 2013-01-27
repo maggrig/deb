@@ -41,9 +41,8 @@ public class Archiv extends Activity implements OnClickListener {
 		Cursor c = db.query("main_info", null, null, null, null, null, null);
 		if (c != null) {
 			if (c.moveToFirst()) {
-				String str;
 				do {
-					str = "";
+
 //					setText(c.getString(0));
 
 				} while (c.moveToNext());
