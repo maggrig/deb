@@ -17,23 +17,24 @@ public final class R {
         public static final int tab_icon_selector=0x7f020003;
     }
     public static final class id {
-        public static final int Exit=0x7f070020;
-        public static final int LinearLayout1=0x7f070017;
-        public static final int Settings=0x7f07001f;
+        public static final int Exit=0x7f070021;
+        public static final int LinearLayout1=0x7f070018;
+        public static final int Settings=0x7f070020;
         public static final int TableLayout1=0x7f070006;
-        public static final int btnext1=0x7f07001e;
+        public static final int btnext1=0x7f07001f;
         public static final int button1=0x7f070000;
         public static final int button2=0x7f070001;
-        public static final int checkBox1=0x7f070018;
+        public static final int button3=0x7f070017;
+        public static final int checkBox1=0x7f070019;
         public static final int digitalClock1=0x7f070008;
         public static final int editText1=0x7f07000e;
         public static final int editText2=0x7f07000f;
         public static final int editText3=0x7f070010;
-        public static final int editText4=0x7f07001d;
-        public static final int radio0=0x7f07001a;
-        public static final int radio1=0x7f07001b;
-        public static final int radioGroup1=0x7f070019;
-        public static final int scrollView1=0x7f07001c;
+        public static final int editText4=0x7f07001e;
+        public static final int radio0=0x7f07001b;
+        public static final int radio1=0x7f07001c;
+        public static final int radioGroup1=0x7f07001a;
+        public static final int scrollView1=0x7f07001d;
         public static final int tableRow1=0x7f070009;
         public static final int tableRow2=0x7f070007;
         public static final int tableRow3=0x7f07000d;
@@ -54,9 +55,10 @@ public final class R {
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int archiv=0x7f030001;
-        public static final int mydata=0x7f030002;
-        public static final int settings=0x7f030003;
-        public static final int tabform=0x7f030004;
+        public static final int head=0x7f030002;
+        public static final int mydata=0x7f030003;
+        public static final int settings=0x7f030004;
+        public static final int tabform=0x7f030005;
     }
     public static final class menu {
         public static final int activity_main=0x7f060000;

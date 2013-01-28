@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -33,14 +34,18 @@ public class Dyn_data extends Activity implements OnClickListener {
 	EditText res1, res2, res3;
 	TableRow nameLabels, resLabels, sumLabes, btnLabels, rowTitle;
 	ScrollView scrol;
-	TableLayout table;
+	TableLayout table_head,table_data;
 	DigitalClock clock;
 	TableRow.LayoutParams param;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		scrol = new ScrollView(this);
-		table = new TableLayout(this);
+		table_head = new TableLayout(this); // шапка
+//		table_data = new TableLayout(this);// данные игры
+//		 LayoutInflater ltInflater = getLayoutInflater();
+//        View view = ltInflater.inflate(table_head, null, false);
+//        LayoutParams lp = view.getLayoutParams();
 		clock = new DigitalClock(this);
 		nameLabels = new TableRow(this); // строка с именами
 		resLabels = new TableRow(this);// строка с результатами
@@ -53,12 +58,13 @@ public class Dyn_data extends Activity implements OnClickListener {
 		sumLabes.setGravity(Gravity.CENTER_HORIZONTAL);
 		btnLabels.setGravity(Gravity.CENTER_HORIZONTAL);
 		param = new TableRow.LayoutParams();
+		
 		param.setMargins(0, 0, 0, 1);
 		// TableRow.LayoutParams params = new TableRow.LayoutParams();
 		// params.span = 3;
-		table.setStretchAllColumns(true);
-		table.setShrinkAllColumns(true);
-		scrol.addView(table);
+		table_head.setStretchAllColumns(true);
+		table_head.setShrinkAllColumns(true);
+		scrol.addView(table_head);
 		// --------------------------------------
 		name1 = new TextView(this);
 		name2 = new TextView(this);
@@ -130,19 +136,17 @@ public class Dyn_data extends Activity implements OnClickListener {
 			sumLabes.addView(sum2);
 		}
 
-		table.addView(rowTitle);
-		table.addView(nameLabels);
-		table.addView(resLabels);
-		table.addView(sumLabes);
-		table.addView(btnLabels);
+		table_head.addView(rowTitle);
+		table_head.addView(nameLabels);
+		table_head.addView(resLabels);
+		table_head.addView(sumLabes);
+		table_head.addView(btnLabels);
 		onUpdate();
 		setContentView(scrol);
 
 	}
 
 	/*
-	 * (non-Javadoc)
-	 * 
 	 * @see android.view.View.OnClickListener#onClick(android.view.View)
 	 */
 	@Override
@@ -176,6 +180,8 @@ public class Dyn_data extends Activity implements OnClickListener {
 	}
 
 	public void onUpdate() {
+//		tr=null;
+//		table.removeViews(0, 5);
 		SQLiteDatabase db = dbHelper.getWritableDatabase();
 		Cursor c = db.query("mytable", null, "_id_data="+row_id , null,
 				null, null, null);
@@ -212,7 +218,7 @@ public class Dyn_data extends Activity implements OnClickListener {
 						num_result.setTextColor(Color.BLACK);
 					}
 					tr.addView(result3);
-					table.addView(tr);
+					table_head.addView(tr);
 				} while (c.moveToNext());
 			}
 			c.close();

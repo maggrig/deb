@@ -51,17 +51,27 @@ public class MainActivity extends TabActivity implements OnClickListener,
 		TabHost.TabSpec tabSpec;
 		// создаем вкладку и указываем тег
 		tabSpec = tabHost.newTabSpec("tag1");
+		tabSpec.setIndicator("2 Игрока",
+				getResources().getDrawable(R.drawable.tab_icon_selector));
+
 		// создаем интент и передаем туда ков-во игроков
 		intent.putExtra("count", 2);
 		tabSpec.setContent(intent);
 		// добавляем в корневой элемент
 		tabHost.addTab(tabSpec);
+		
 		tabSpec = tabHost.newTabSpec("tag2");
+		tabSpec.setIndicator("3 Игрока",
+				getResources().getDrawable(R.drawable.tab_icon_selector));
+
 		// Intent intent = new Intent(this, Mainform.class);
 		intent1.putExtra("count", 3);
 		tabSpec.setContent(intent1);
 		tabHost.addTab(tabSpec);
 		tabSpec = tabHost.newTabSpec("tag3");
+		tabSpec.setIndicator("2 Игрока",
+				getResources().getDrawable(R.drawable.tab_icon_selector));
+
 		intent2.putExtra("count", 4);
 		tabSpec.setContent(intent2);
 		tabHost.addTab(tabSpec);
