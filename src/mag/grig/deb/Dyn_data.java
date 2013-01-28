@@ -43,8 +43,8 @@ public class Dyn_data extends Activity implements OnClickListener {
 		scrol = new ScrollView(this);
 		table_head = new TableLayout(this); // шапка
 //		table_data = new TableLayout(this);// данные игры
-//		 LayoutInflater ltInflater = getLayoutInflater();
-//        View view = ltInflater.inflate(table_head, null, false);
+		 LayoutInflater ltInflater = getLayoutInflater();
+        View view = ltInflater.inflate(R.layout.head, null, false);
 //        LayoutParams lp = view.getLayoutParams();
 		clock = new DigitalClock(this);
 		nameLabels = new TableRow(this); // строка с именами
