@@ -38,7 +38,7 @@ public class MainActivity extends TabActivity implements OnClickListener,
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		// инициализация
+	
   	    button1 = (Button) findViewById(R.id.button1);
         button1.setOnClickListener(this);
   	    button2 = (Button) findViewById(R.id.button2);
@@ -49,19 +49,19 @@ public class MainActivity extends TabActivity implements OnClickListener,
 		Intent intent2 = new Intent(this, Tabform.class);
 		TabHost tabHost = getTabHost();
 		TabHost.TabSpec tabSpec;
-		// создаем вкладку и указываем тег
+		// РЅР°Р·РІР°РЅРёРµ РІРєР»Р°РґРєРё
 		tabSpec = tabHost.newTabSpec("tag1");
-		tabSpec.setIndicator("2 Игрока",
+		tabSpec.setIndicator("2 РёРіСЂРѕРєР°",
 				getResources().getDrawable(R.drawable.tab_icon_selector));
 
-		// создаем интент и передаем туда ков-во игроков
+		// СЃРѕР·РґР°РµРј РёРЅС‚РµРЅС‚ Рё РїРµСЂРµРґР°РµРј С‚СѓРґР° РєРѕРІ-РІРѕ РёРіСЂРѕРєРѕРІ
 		intent.putExtra("count", 2);
 		tabSpec.setContent(intent);
-		// добавляем в корневой элемент
+		// РґРѕР±Р°РІР»СЏРµРј РІ РєРѕСЂРЅРµРІРѕР№ СЌР»РµРјРµРЅС‚
 		tabHost.addTab(tabSpec);
 		
 		tabSpec = tabHost.newTabSpec("tag2");
-		tabSpec.setIndicator("3 Игрока",
+		tabSpec.setIndicator("3 РёРіСЂРѕРєР°",
 				getResources().getDrawable(R.drawable.tab_icon_selector));
 
 		// Intent intent = new Intent(this, Mainform.class);
@@ -69,7 +69,7 @@ public class MainActivity extends TabActivity implements OnClickListener,
 		tabSpec.setContent(intent1);
 		tabHost.addTab(tabSpec);
 		tabSpec = tabHost.newTabSpec("tag3");
-		tabSpec.setIndicator("2 Игрока",
+		tabSpec.setIndicator("4  РёРіСЂРѕРєР°",
 				getResources().getDrawable(R.drawable.tab_icon_selector));
 
 		intent2.putExtra("count", 4);
@@ -78,13 +78,13 @@ public class MainActivity extends TabActivity implements OnClickListener,
 		tabHost.setCurrentTabByTag("tag1");
 		tabHost.setOnTabChangedListener(this);
 	}	
-	// создание меню
+
 	  @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		    getMenuInflater().inflate(R.menu.activity_main, menu);
 		    return super.onCreateOptionsMenu(menu);
 		  }
-		 // обработка нажатий
+	  // РѕР±СЂР°Р±РѕС‚РєР° РЅР°Р¶Р°С‚РёР№
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
       return super.onOptionsItemSelected(item);

@@ -85,8 +85,8 @@ public class Dyn_data extends Activity implements OnClickListener {
 		button2.setId(2);
 		// ----------------------------------------------------
 
-		button1.setText("���������");
-		button2.setText("��������");
+		button1.setText("Записать");
+		button2.setText("Обновить");
 
 		rowTitle.setGravity(Gravity.CENTER_HORIZONTAL);
 		rowTitle.addView(clock);
@@ -167,12 +167,12 @@ public class Dyn_data extends Activity implements OnClickListener {
 			cv.put("_sum3", temp3);
 			// cv.put("_bide",);
 			long rowID = db.insert("mytable", null, cv);
-			Toast.makeText(this, "�������", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Записал", Toast.LENGTH_SHORT).show();
 		}
 			break;
 		case 2: {
 			onUpdate();
-			Toast.makeText(this, "�������", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Сохранил", Toast.LENGTH_SHORT).show();
 		}
 			break;
 		}
