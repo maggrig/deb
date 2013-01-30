@@ -11,6 +11,8 @@ import android.widget.CheckBox;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+
+
 public class Settings extends Activity implements OnClickListener {
 	SharedPreferences sPref;
 	CheckBox checkBox1;

@@ -13,13 +13,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+
+
 public class Tabform extends Activity implements OnClickListener {
 
 	TextView textView3, textView2, textView1, textView4, textView5, textView6,
 			textView7;
 	EditText editText1, editText2, editText3, editText4;
 
-	DBHelper dbHelper;
+	DB mydb;
 	Button btnext1;
 	int count;
 	int mHour, mMinute, mDate, mYear, mMonth;
@@ -42,8 +44,8 @@ public class Tabform extends Activity implements OnClickListener {
 		textView4 = (TextView) findViewById(R.id.textView4);
 		textView5 = (TextView) findViewById(R.id.textView5);
 		textView6 = (TextView) findViewById(R.id.textView6);
-		textView7 = (TextView) findViewById(R.id.textView7);
-		dbHelper = new DBHelper(this);
+
+		mydb = new DB(this);
 		Intent intent = getIntent();
 		count = intent.getIntExtra("count", 0);
 		// кол-во игроков
@@ -72,7 +74,7 @@ public class Tabform extends Activity implements OnClickListener {
 	public void onClick(View v) {
 
 		ContentValues cv = new ContentValues();
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		SQLiteDatabase db = mydb.open();
 		// db.execSQL("DROP TABLE IF EXISTS mytable;");
 		// db.execSQL("DROP TABLE IF EXISTS main_info;");
 		String name1 = editText1.getText().toString();
@@ -118,7 +120,7 @@ public class Tabform extends Activity implements OnClickListener {
 		mDate = cal.get(Calendar.DATE);
 		mMonth = cal.get(Calendar.MONTH);
 		mYear = cal.get(Calendar.YEAR);
-		cv.put("_data", mDate + "/" + (mMonth + 1) + "/" + mYear);
+		cv.put("_date", mDate + "/" + (mMonth + 1) + "/" + mYear);
 		cv.put("_time", mHour + ":" + mMinute);
 		// вставляем запись и получаем ее ID
 		long rowID = db.insert("main_info", null, cv);
@@ -127,7 +129,7 @@ public class Tabform extends Activity implements OnClickListener {
 		// c.moveToLast();
 		// textView7.setText(c.getString(0));
 		// c.close();
-		db.close();
+		mydb.close();
 		startActivity(intent1);
 	}
 

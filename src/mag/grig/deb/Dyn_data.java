@@ -22,6 +22,8 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
+
 /**
  * @author grigoriy
  * 
@@ -29,7 +31,7 @@ import android.widget.Toast;
 public class Dyn_data extends Activity implements OnClickListener {
 	int count;
 	long row_id;
-	DBHelper dbHelper = new DBHelper(this);
+	DB mydb = new DB(this);
 	TextView name1, name2, name3, name4, sum1, sum2, sum3;
 	EditText res1, res2, res3;
 	TableRow nameLabels, resLabels, sumLabes, btnLabels, rowTitle;
@@ -41,17 +43,17 @@ public class Dyn_data extends Activity implements OnClickListener {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		scrol = new ScrollView(this);
-		table_head = new TableLayout(this); // шапка
-//		table_data = new TableLayout(this);// данные игры
+		table_head = new TableLayout(this); // С€Р°РїРєР°
+//		table_data = new TableLayout(this);// РґР°РЅРЅС‹Рµ РёРіСЂС‹
 		 LayoutInflater ltInflater = getLayoutInflater();
         View view = ltInflater.inflate(R.layout.head, null, false);
 //        LayoutParams lp = view.getLayoutParams();
 		clock = new DigitalClock(this);
-		nameLabels = new TableRow(this); // Имена игроков
-		resLabels = new TableRow(this);// результат
-		sumLabes = new TableRow(this);// итого
-		btnLabels = new TableRow(this);//Кнопки
-		rowTitle = new TableRow(this); // часы
+		nameLabels = new TableRow(this); // Р�РјРµРЅР° РёРіСЂРѕРєРѕРІ
+		resLabels = new TableRow(this);// СЂРµР·СѓР»СЊС‚Р°С‚
+		sumLabes = new TableRow(this);// РёС‚РѕРіРѕ
+		btnLabels = new TableRow(this);//РљРЅРѕРїРєРё
+		rowTitle = new TableRow(this); // С‡Р°СЃС‹
 		rowTitle.setGravity(Gravity.CENTER_HORIZONTAL);
 		nameLabels.setGravity(Gravity.CENTER_HORIZONTAL);
 		resLabels.setGravity(Gravity.CENTER_HORIZONTAL);
@@ -85,8 +87,8 @@ public class Dyn_data extends Activity implements OnClickListener {
 		button2.setId(2);
 		// ----------------------------------------------------
 
-		button1.setText("Записать");
-		button2.setText("Обновить");
+		button1.setText("Р—Р°РїРёСЃР°С‚СЊ");
+		button2.setText("РћР±РЅРѕРІРёС‚СЊ");
 
 		rowTitle.setGravity(Gravity.CENTER_HORIZONTAL);
 		rowTitle.addView(clock);
@@ -153,18 +155,15 @@ public class Dyn_data extends Activity implements OnClickListener {
 	public void onClick(View v) {
 
 		ContentValues cv = new ContentValues();
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		SQLiteDatabase db = mydb.open();
 
-		String temp1 = res1.getText().toString();
-		String temp2 = res2.getText().toString();
-		String temp3 = res3.getText().toString();
 
 		switch (v.getId()) {
 		case 1: {
 			cv.put("_id_data", row_id);
-			cv.put("_sum1", temp1);
-			cv.put("_sum2", temp2);
-			cv.put("_sum3", temp3);
+			cv.put("_sum1", res1.getText().toString());
+			cv.put("_sum2", res2.getText().toString());
+			cv.put("_sum3", res3.getText().toString());
 			// cv.put("_bide",);
 			long rowID = db.insert("mytable", null, cv);
 			Toast.makeText(this, "Записал", Toast.LENGTH_SHORT).show();
@@ -172,7 +171,7 @@ public class Dyn_data extends Activity implements OnClickListener {
 			break;
 		case 2: {
 			onUpdate();
-			Toast.makeText(this, "Сохранил", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, "Обновил", Toast.LENGTH_SHORT).show();
 		}
 			break;
 		}
@@ -182,7 +181,7 @@ public class Dyn_data extends Activity implements OnClickListener {
 	public void onUpdate() {
 //		tr=null;
 //		table.removeViews(0, 5);
-		SQLiteDatabase db = dbHelper.getWritableDatabase();
+		SQLiteDatabase db = mydb.open();
 		Cursor c = db.query("mytable", null, "_id_data="+row_id , null,
 				null, null, null);
 		if (c != null) {
@@ -196,7 +195,7 @@ public class Dyn_data extends Activity implements OnClickListener {
 							LayoutParams.WRAP_CONTENT));
 					TextView num_result = new TextView(this);
 					num_result.setId(300 + current);
-					num_result.setText("�" + current + "-");
+					num_result.setText("пїЅ" + current + "-");
 					num_result.setWidth(5);
 					TextView result2 = new TextView(this);
 					result2.setLayoutParams(param);
@@ -223,7 +222,7 @@ public class Dyn_data extends Activity implements OnClickListener {
 			}
 			c.close();
 		} else
-			db.close();
+			mydb.close();
 
 	}
 
