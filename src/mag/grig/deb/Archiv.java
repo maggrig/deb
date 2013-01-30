@@ -37,15 +37,16 @@ public class Archiv extends Activity implements OnClickListener {
 	    startManagingCursor(cursor);
 	    // сопоставление данных и View для групп
 //	    String[] groupFrom = { "_id","_Name1","_Name2","_Name3","_Name4" };
-	    String[] groupFrom = { "_id","_Name1","_Name2","_date","_time" };	    
-	    int[] groupTo =  { R.id.grText,R.id.grText1,R.id.grText2,R.id.grText3};
+	    String[] groupFrom = { "_id","_Name1","_Name2","_Name3","_Name4","_date","_time" };	    
+	    int[] groupTo =  { R.id.grText,R.id.grText1,R.id.grText2,R.id.grText3,R.id.grText4,R.id.grDate,R.id.grTime};
 	    // сопоставление данных и View для элементов
 	    String[] childFrom = { "_id_data","_sum1","_sum2","_sum3" };
 	    int[] childTo = { R.id.tvText, R.id.tvText1,R.id.tvText2,R.id.tvText3};
 
 	    // создаем адаптер и настраиваем список
 	    SimpleCursorTreeAdapter sctAdapter = new MyAdapter(this, cursor,
-	        /*android.R.layout.simple_expandable_list_item_2*/R.layout.group_item, groupFrom,
+	        /*android.R.layout.simple_expandable_list_item_2*/
+	    		R.layout.group_item, groupFrom,
 	        groupTo, R.layout.item, childFrom,
 	        childTo);
 	    elvMain = (ExpandableListView) findViewById(R.id.elvMain);
@@ -80,10 +81,9 @@ public class Archiv extends Activity implements OnClickListener {
 	    }
 
 	    protected Cursor getChildrenCursor(Cursor groupCursor) {
-	      // получаем курсор по элементам для конкретной группы
-	      int idColumn = groupCursor.getColumnIndex("_id");
-	      Cursor my=mydb.getPartyData(groupCursor.getInt(idColumn));
-	      return my;
+	      // получаем курсор по элементам для конкретной партии
+//	      int idColumn = groupCursor.getColumnIndex("_id");
+	      return mydb.getPartyData(groupCursor.getInt(0));
 	    }
 	  }
 }

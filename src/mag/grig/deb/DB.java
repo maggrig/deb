@@ -14,26 +14,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  *
  */
 class DB {
-	  private static final String DB_NAME = "mydb";
-	  private static final int DB_VERSION = 1;
 
-	  // имя таблицы компаний, поля и запрос создания 
-	  private static final String MAIN_TABLE = "main_info";
-	  public static final String MAIN_COLUMN_ID = "_id";
-//	  public static final String MAIN_COLUMN_NAME1 = "name1";
-//	  public static final String MAIN_COLUMN_NAME2 = "name2";
-//	  public static final String MAIN_COLUMN_NAME3 = "name3";
-//	  public static final String MAIN_COLUMN_NAME4 = "name4";
-//	  public static final String MAIN_COLUMN_DATE = "date";
-//	  public static final String MAIN_COLUMN_TIME = "time";
-//	  public static final String MAIN_COLUMN_COUNT = "count";
-	  
-	  // имя таблицы телефонов, поля и запрос создания
-	  private static final String DATA_TABLE = "mytable";
-	  public static final String DATA_COLUMN_ID = "_id_data";
-//	  public static final String DATA_COLUMN_NAME = "name";
-//	  public static final String DATA_COLUMN_COMPANY = "company";
-	  
 	  private final Context mCtx;
 
 	  private DBHelper mDBHelper;
@@ -58,15 +39,13 @@ class DB {
 
 	  // данные по играм
 	  public Cursor getGameData() {
-	     Cursor my= mDB.query(MAIN_TABLE, null, null, null, null, null, null);
-	     return my ;
+	     return mDB.query("main_info", null, null, null, null, null, null);
 	  }
 
 	  // данные по партиям
 	  public Cursor getPartyData(long dataID) {
-		  Cursor my= mDB.query(DATA_TABLE, null, "_id_data = "
+		   return mDB.query("mytable", null, "_id_data = "
 			        + dataID, null, null, null, null);
-	    return my;
 	  }
 	
 private class DBHelper extends SQLiteOpenHelper {
