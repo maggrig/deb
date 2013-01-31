@@ -3,6 +3,7 @@
  */
 package mag.grig.deb;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -36,7 +37,11 @@ class DB {
 	    if (mDBHelper != null)
 	      mDBHelper.close();
 	  }
-
+	  
+	  public void upRec(ContentValues cv,long id) {
+		  
+		    mDB.update("mytable",cv, "_id_data" + " = " + id, null);
+		  }
 	  // данные по играм
 	  public Cursor getGameData() {
 	     return mDB.query("main_info", null, null, null, null, null, null);
